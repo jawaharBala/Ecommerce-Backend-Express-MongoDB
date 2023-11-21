@@ -17,9 +17,10 @@ usersRoute.get("/", async (req, res) => {
 });
 usersRoute.get("/email", async (req, res) => {
   try {
-    let users = await Users.findOne({ email: req.body.email});
-    if(users){
-      res.status(200).json(users);
+    let user = await Users.findOne({ email: req.body.email});
+    console.log(user,req.body.email)
+    if(user){
+      res.status(200).json(user);
     }else{
       res.status(404).json("User not found!");
     }; 
